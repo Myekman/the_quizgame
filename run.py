@@ -39,3 +39,14 @@ for question in questions:
     user_answer = input("Enter answer: ")
 
     correct_answer = question.get("answer")
+
+if user_answer == correct_answer:
+    score = score + 1
+    print("\nCorrect!")
+elif user_answer != correct_answer:
+    wrong_answer = wrong_answer + 1
+    print(f"\nIncorrect.. The right answer was: {correct_answer}") 
+
+
+print(f"Your score = {score}")
+print(f"Wrong answer: {wrong_answer}")
