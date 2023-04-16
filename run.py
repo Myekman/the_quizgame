@@ -1,4 +1,5 @@
 
+
 score = 0
 wrong_answer = 0
 
@@ -7,15 +8,20 @@ print("Welcome to this game!")
 name = input("\nEnter your name: ")
 print(f"\nHello {name}")
 
-play = input("\nDo you like to play, yes or no?")
+# play = input("\nDo you like to play, yes or no?")
 
-if play == "yes":
-    print("\nLet's do this!")
-    print("________________________")
-elif play == "no":
-    print("Goodbye..")
-else:
-    print("invalid choice, try again!") 
+while True: 
+    play = input("\nDo you like to play, yes or no?")
+
+    if play == "yes":
+      print("\nLet's do this!")
+      print("________________________")
+      break
+    elif play == "no":
+      print("Goodbye..")
+      exit()
+    else:
+      print("invalid choice, try again!") 
 
 questions = [
   {
@@ -33,20 +39,21 @@ questions = [
 ]
 
 for question in questions:
-    show_question = question.get("question")
-    print(show_question)
+  show_question = question.get("question")
+  print(show_question)
 
-    user_answer = input("Enter answer: ")
+  user_answer = input("Enter answer: ")
 
-    correct_answer = question.get("answer")
+  correct_answer = question.get("answer")
 
-if user_answer == correct_answer:
-    score = score + 1
-    print("\nCorrect!")
-elif user_answer != correct_answer:
-    wrong_answer = wrong_answer + 1
-    print(f"\nIncorrect.. The right answer was: {correct_answer}") 
-
+  if user_answer == correct_answer:
+     score = score + 1
+     print("\nCorrect!")
+  elif user_answer != correct_answer:
+     wrong_answer = wrong_answer + 1
+     print(f"\nIncorrect.. The right answer was: {correct_answer}") 
+  if score == 3:
+     print("Good job, you got the highest score!")
 
 print(f"Your score = {score}")
 print(f"Wrong answer: {wrong_answer}")
