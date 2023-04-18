@@ -5,23 +5,22 @@ print("Welcome to this game!")
 name = input("\nEnter your name: ")
 print(f"\nHello {name}!")
 
-
 while True: 
-    play = input("\nDo you like to play? Please type yes or no: ")
+  play = input("\nDo you like to play? please type yes or no: ")
 
-    if play == "yes":
-        print("\nLet's do this!")
-        print("________________________")
-        print("\nLEVEL 1!")
-        break
-    elif play == "no":
-        print("Goodbye..")
-        exit()
-    else:
-        print("invalid choice, try again!") 
+  if play == "yes":
+    print("\nLet's do this!")
+    print("________________________")
+    print("\nLEVEL 1!")
+    break
+  elif play == "no":
+    print("Goodbye..")
+    exit()
+  else:
+    print("\nInvalid choice, try again!") 
 
 
-# Level 1 in game
+#level 1 in game
 questions = [
   {
     'question': "\nA square has ___ sides?",
@@ -36,7 +35,6 @@ questions = [
     'answer': '0'
   }
 ]
-
 
 def level_one(questions):
   score = 0
@@ -75,8 +73,7 @@ def level_one(questions):
       break
 
 
-#Level 2 in game 
-
+#level 2
 def run_test_2():
     secret_number = int("8")
     guess = ""
@@ -103,6 +100,34 @@ def run_test_2():
       print("Welcome to level 3!")
       print("________________________")
       print()
+  
+
+# #level 3 in game
+
+question_prompts = [
+  "What color are apples?\n(a) Red\n(b) Purple\n(c) Orange\n\n",
+  "What color are oranges?\n(a) Red\n(b) Yellow\n(c) Orange\n\n",
+  "What color are bananas?\n(a) Red\n(b) Yellow\n(c) Orange\n\n",
+]
+
+level3 = [
+  Question(question_prompts[0], "a"),
+  Question(question_prompts[1], "c"),
+  Question(question_prompts[2], "b"),
+]
+
+def run_test_3(level3):
+  print("LEVEL 3!")
+  print()
+  
+  score = 0
+  for question in level3:
+    answer = input(question.prompt)
+    if answer == question.answer:
+      score = score + 1
+  print("You got " + str(score) + "/" + str(len(level3)) + " Correct")
+
 
 level_one(questions)
 run_test_2()
+run_test_3(level3)
