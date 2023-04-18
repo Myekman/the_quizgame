@@ -1,4 +1,5 @@
 from Question import Question
+import os
 
 print("Welcome to this game!")
 
@@ -36,6 +37,7 @@ questions = [
   }
 ]
 
+
 def level_one(questions):
     score = 0
     wrong_answer = 0
@@ -58,6 +60,7 @@ def level_one(questions):
 
         if score == 3:
             print("Good job, you got the highest score!")
+            os.system('clear')
             print("\n\nWelcome to level 2!")
             print("________________________")
             you_win = True
@@ -97,6 +100,7 @@ def run_test_2():
         run_test_2()
     else:
         print("\nCorrect!")
+        os.system('clear')
         print("Welcome to level 3!")
         print("________________________")
         print()
