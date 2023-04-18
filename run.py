@@ -20,6 +20,7 @@ while True:
     else:
         print("invalid choice, try again!") 
 
+
 # Level 1 in game
 questions = [
   {
@@ -74,46 +75,34 @@ def level_one(questions):
       break
 
 
-# for question in questions:
-#    show_question = question.get("question")
-#    print(show_question)
+#Level 2 in game 
 
-#    user_answer = input("Enter answer: ")
+def run_test_2():
+    secret_number = int("8")
+    guess = ""
+    guess_count = 0
+    guess_limit = 10
+    out_of_guesses = False
+    print("\nLEVEL 2!")
 
-#    correct_answer = question.get("answer")
+    while guess != secret_number and not(out_of_guesses):
+      if guess_count < guess_limit:
+        print("\nCan you guess the right number between 0-15? ")
+        guess = int(input("enter guess: "))
+        guess_count += 1
+      else:
+        out_of_guesses = True
 
-#    if user_answer == correct_answer:
-#      score = score + 1
-#      print("\nCorrect!")
-#    elif user_answer != correct_answer:
-#      wrong_answer = wrong_answer + 1
-#      print(f"\nIncorrect.. The right answer was: {correct_answer}") 
-#    if score == 3:
-#      print("Good job, you got the highest score!")
-#    elif score < 3:
-#      print(f"\nYour score = {score}")
-#      print(f"\nWrong answer: {wrong_answer}")
-
-
-# level 2 in game
-# secret_number = int("8")
-# guess = ""
-# guess_count = 0
-# guess_limit = 10
-# out_of_guesses = False
-# print("\nWelcome to next level!")
-# print("\nCan you guess the right number between 0-15")
-
-# while guess != secret_number and not (out_of_guesses):
-#   if guess_count < guess_limit:
-#     guess = int(input("enter guess: "))
-#     guess_count += 1
-#   else:
-#     out_of_guesses = True
-
-# if out_of_guesses:
-#   print("YOT LOSE!")
-# else:
-#   print("YOU WIN!")  
+    if out_of_guesses:
+      print("\nYOU LOSE!")
+      print("\nTry again....")
+      print("________________________")
+      run_test_2()
+    else:
+      print("\nCorrect!")
+      print("Welcome to level 3!")
+      print("________________________")
+      print()
 
 level_one(questions)
+run_test_2()
