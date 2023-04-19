@@ -1,5 +1,5 @@
-from Question import Question
 import os
+from Question import Question
 
 print("Welcome to this game!")
 
@@ -21,8 +21,7 @@ while True:
         print("\nInvalid choice, try again!") 
 
 
-#level 1 in game
-questions = [
+level_1_questions = [
   {
     'question': "\nA square has ___ sides?",
     'answer': '4'
@@ -38,12 +37,13 @@ questions = [
 ]
 
 
-def level_one(questions):
+# #level 1 in game
+def level_one(level_1_questions):
     score = 0
     wrong_answer = 0
     you_win = False
-  
-    for question in questions:
+    
+    for question in level_1_questions:
         show_question = question.get("question")
         print(show_question)
 
@@ -68,15 +68,15 @@ def level_one(questions):
             print(f"\nYour score = {score}")
             print(f"\nWrong answer: {wrong_answer}")
 
-    while you_win == False:
+    while you_win is False:
         print("\nyou need ... to move to next level")
         print("\ntry again")
-        level_one(questions)
+        level_one(level_1_questions)
         if you_win:
             break
 
 
-#level 2
+# #level 2 in game
 def run_test_2():
     secret_number = int("8")
     guess = ""
@@ -85,7 +85,7 @@ def run_test_2():
     out_of_guesses = False
     print("\nLEVEL 2!")
 
-    while guess != secret_number and not(out_of_guesses):
+    while guess != secret_number and not (out_of_guesses):
         if guess_count < guess_limit:
             print("\nCan you guess the right number between 0-15? ")
             guess = int(input("enter guess: "))
@@ -122,9 +122,12 @@ level3 = [
 
 
 def run_test_3(level3):
+    """
+    loop thrue the questions in level3
+
+    """
     print("LEVEL 3!")
     print()
-  
     score = 0
     for question in level3:
         answer = input(question.prompt)
@@ -133,6 +136,6 @@ def run_test_3(level3):
     print("You got " + str(score) + "/" + str(len(level3)) + " Correct")
 
 
-level_one(questions)
+level_one(level_1_questions)
 run_test_2()
 run_test_3(level3)
