@@ -68,12 +68,8 @@ def level_one(level_1_questions):
             print(f"\nYour score = {score}")
             print(f"\nWrong answer: {wrong_answer}")
 
-    while you_win is False:
-        print("\nyou need ... to move to next level")
-        print("\ntry again")
-        level_one(level_1_questions)
-        if you_win:
-            break
+    # #returnera om funktionen har gått bra eller dåligt
+    return you_win
 
 
 # #level 2 in game
@@ -104,12 +100,13 @@ def run_test_2():
         print("Welcome to level 3!")
         print("________________________")
         print()
-  
+
 
 # #level 3 in game
 
 question_prompts = [
-  "Adding the numbers between 1 to 100 consecutively (1+2+3+4+…) gives you what final answer?\n(a) 5050\n(b) 3050\n(c) 10010\n\n",
+  "Adding the numbers between 1 to 100 consecutively (1+2+3+4+…) gives you " +
+  "what final answer?\n(a) 5050\n(b) 3050\n(c) 10010\n\n",
   "What is the value of Pi to four individual decimal places?\n(a) 3.1418\n(b) 3.1426\n(c) 3.1416\n\n",
   "How many hours are there in a year (rounded to the nearest hour)?\n(a) 9000 hours\n(b) 8760 hours\n(c) 12200 hours\n\n",
 ]
@@ -136,6 +133,21 @@ def run_test_3(level3):
     print("You got " + str(score) + "/" + str(len(level3)) + " Correct")
 
 
-level_one(level_1_questions)
-run_test_2()
-run_test_3(level3)
+def play_game():
+    you_win_level_1 = False
+    while not you_win_level_1:
+        # anropa funktion level 1 som retunerar ett värde om funktionen har gått bra eller dåligt
+        # har den gått bra avbryts while loopen
+        # annars nytt försök på level 1
+        you_win_level_1 = level_one(level_1_questions)
+        if you_win_level_1:
+            break
+        else:
+            print("\nyou need ... to move to next level")
+            print("\ntry again")
+
+    run_test_2()
+    run_test_3(level3)
+
+
+play_game()
