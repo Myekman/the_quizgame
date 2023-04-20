@@ -21,6 +21,7 @@ while True:
         print("\nInvalid choice, try again!")
 
 
+
 level_1_questions = [
   {
     'question': "\nA square has ___ sides?",
@@ -60,7 +61,7 @@ def level_one(level_1_questions):
 
         if score == 3:
             os.system('clear')
-            print("Good job, you got the highest score!")
+            print("well done, you're on to the next level!")
             print(f"\n\nYour score is {score}")
             print("\n\nWelcome to level 2!")
             print("________________________")
@@ -70,7 +71,7 @@ def level_one(level_1_questions):
             print(f"\nWrong answer: {wrong_answer}")
 
     # #returnera om funktionen har gått bra eller dåligt
-    return you_win, score 
+    return you_win, score
 
 
 # #level 2 in game
@@ -79,6 +80,7 @@ def run_test_2():
     guess = ""
     guess_count = 0
     guess_limit = 10
+    # lose_test_2 = 0
     out_of_guesses = False
     you_win = False
     print("\nLEVEL 2!")
@@ -95,6 +97,7 @@ def run_test_2():
             print("\nInvalid number, must be a number 0-15")
 
     if out_of_guesses:
+        # lose_test_2 += 1
         print("\nYOU LOSE!")
         print("\nTry again....")
         print("________________________")
@@ -104,21 +107,21 @@ def run_test_2():
         os.system('clear')
         print("\nCorrect!")
         print(f"\nyou guessed {guess_count} times")
+        # print(lose_test_2)
         print("\nWelcome to level 3!")
         print("________________________")
         print()
 
     return you_win, guess_count
-
 # #level 3 in game
 
 
 question_prompts = [
   "Adding the numbers between 1 to 100 consecutively (1+2+3+4+…) gives you " +
   "what final answer?\n(a) 5050\n(b) 3050\n(c) 10010\n\n",
-  "What is the value of Pi to four individual" + 
+  "What is the value of Pi to four individual" +
   "decimal places?\n(a) 3.1418\n(b) 3.1426\n(c) 3.1416\n\n",
-  "How many hours are there in a year (rounded to the nearest hour)?" + 
+  "How many hours are there in a year (rounded to the nearest hour)?" +
   "\n(a) 9000 hours\n(b) 8760 hours\n(c) 12200 hours\n\n",
 ]
 
@@ -158,39 +161,53 @@ def play_game():
     number_of_failures_level_3 = 0
 
     while not you_win_level_1:
-        # anropa funktion level 1 som retunerar ett värde om 
-        # funktionen har gått bra eller dåligt
-        # har den gått bra avbryts while loopen
-        # annars nytt försök på level 1
+        # Call the function level_one
+        # Return the value of you_win
+        # If you win the loop breaks
+        # Or else a new try on level 1
         you_win_level_1, score = level_one(level_1_questions)
         if you_win_level_1:
             break
         else:
             number_of_failures_level_1 = number_of_failures_level_1 + 1
-            total_number_of_failures = total_number_of_failures + 1
-            print("\nyou need ... to move to next level")
+            print("\nyou need to answer all questions correctly to move to next level")
             print("\ntry again")
 
     while not you_win_level_2:
-        # anropa funktion level 1 som retunerar ett värde om 
-        # funktionen har gått bra eller dåligt
-        # har den gått bra avbryts while loopen
-        # annars nytt försök på level 1
-        you_win_level_2, guesses_level_2 = run_test_2()
-        number_of_failures_level_2 = number_of_failures_level_2 + 1
-        total_number_of_failures = total_number_of_failures + 1
-        if you_win_level_2:
+        # Call the function run_test_2
+        # Return the value of you_win
+        # If you win the loop breaks
+        # Or else a new try on level 1
+        you_win_level_2, guess_count = run_test_2()
+        if you_win_level_1:
             break
+        else:
+            number_of_failures_level_2 = number_of_failures_level_2 + 1
+            
+        
+    # while not you_win_level_2:
+    #     # anropa funktion level 1 som retunerar ett värde om
+    #     # funktionen har gått bra eller dåligt
+    #     # har den gått bra avbryts while loopen
+    #     # annars nytt försök på level 1
+    #     you_win_level_2, guesses_level_2 = run_test_2()
+    #     number_of_failures_level_2 = number_of_failures_level_2 + 1
+    #     total_number_of_failures = total_number_of_failures + 1
+    #     if you_win_level_2:
+    #         break
 
     # guesses_level_2 = run_test_2()
     run_test_3(level3)
 
-    print(f"\nAntal misslyckade försök nivå 1: {number_of_failures_level_1}")
-    print(f"\nAntal misslyckade försök nivå 2: {number_of_failures_level_2}")
-    print(f"\nAntal felaktiga svar nivå 3: {number_of_failures_level_3}")
-    print(f"\nTotal antal misslyckade försök alla nivåernivå:  {total_number_of_failures}")
-    print(score)
+    os.system('clear')
+
+
+    print("\nThank you for playing, here is your result:")
+    print(f"\nnumber of failed attempts level 1: {number_of_failures_level_1}")
+    print(f"\nnumber of failed attempts level 2: {number_of_failures_level_2}")
+    print(f"\nnumber of wrong answer level 3: {number_of_failures_level_3}")
     
+    print(score)
 
 
 play_game()
