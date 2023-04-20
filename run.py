@@ -82,12 +82,15 @@ def run_test_2():
     print("\nLEVEL 2!")
 
     while guess != secret_number and not (out_of_guesses):
-        if guess_count < guess_limit:
-            print("\nCan you guess the right number between 0-15? ")
-            guess = int(input("enter guess: "))
-            guess_count += 1
-        else:
-            out_of_guesses = True
+        try:
+            if guess_count < guess_limit:
+                print("\nCan you guess the right number between 0-15? ")
+                guess = int(input("enter guess: "))
+                guess_count += 1
+            else:
+                out_of_guesses = True
+        except ValueError:
+            print("\nInvalid number, must be a number 0-15")
 
     if out_of_guesses:
         print("\nYOU LOSE!")
