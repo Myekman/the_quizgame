@@ -80,6 +80,7 @@ def run_test_2():
     guess_count = 0
     guess_limit = 10
     out_of_guesses = False
+    you_win = False
     print("\nLEVEL 2!")
 
     while guess != secret_number and not (out_of_guesses):
@@ -99,6 +100,7 @@ def run_test_2():
         print("________________________")
         run_test_2()
     else:
+        you_win = True
         os.system('clear')
         print("\nCorrect!")
         print(f"\nyou guessed {guess_count} times")
@@ -106,7 +108,7 @@ def run_test_2():
         print("________________________")
         print()
 
-    return guess_count
+    return you_win, guess_count
 
 # #level 3 in game
 
@@ -140,16 +142,20 @@ def run_test_3(level3):
         answer = input(question.prompt)
         if answer == question.answer:
             score = score + 1
-    print("\nYou got " + str(score) + "/" + str(len(level3)) + " Correct")
+            os.system('clear')
+    print("\nYou got " + str(score) + "/" + str(len(level3)) + " Correct in level 3")
+
+    return score
 
 
 def play_game():
     you_win_level_1 = False
+    you_win_level_2 = False
     score = 0
     total_number_of_failures = 0
-    number_of_failure_level_1 = 0
-    number_of_failure_level_2 = 0
-    number_of_failure_level_3 = 0
+    number_of_failures_level_1 = 0
+    number_of_failures_level_2 = 0
+    number_of_failures_level_3 = 0
 
     while not you_win_level_1:
         # anropa funktion level 1 som retunerar ett värde om 
@@ -160,18 +166,31 @@ def play_game():
         if you_win_level_1:
             break
         else:
-            number_of_failure_level_1 = number_of_failure_level_1 + 1
+            number_of_failures_level_1 = number_of_failures_level_1 + 1
             total_number_of_failures = total_number_of_failures + 1
             print("\nyou need ... to move to next level")
             print("\ntry again")
 
-    guesses_level_2 = run_test_2()
+    while not you_win_level_2:
+        # anropa funktion level 1 som retunerar ett värde om 
+        # funktionen har gått bra eller dåligt
+        # har den gått bra avbryts while loopen
+        # annars nytt försök på level 1
+        you_win_level_2, guesses_level_2 = run_test_2()
+        number_of_failures_level_2 = number_of_failures_level_2 + 1
+        total_number_of_failures = total_number_of_failures + 1
+        if you_win_level_2:
+            break
+
+    # guesses_level_2 = run_test_2()
     run_test_3(level3)
 
-    print(f"\nAntal misslyckade försök nivå 1: {number_of_failure_level_1}")
-    print(f"\nAntal misslyckade försök nivå 2: {number_of_failure_level_2}")
-    print(f"\nAntal misslyckade försök nivå 3: {number_of_failure_level_3}")
+    print(f"\nAntal misslyckade försök nivå 1: {number_of_failures_level_1}")
+    print(f"\nAntal misslyckade försök nivå 2: {number_of_failures_level_2}")
+    print(f"\nAntal felaktiga svar nivå 3: {number_of_failures_level_3}")
     print(f"\nTotal antal misslyckade försök alla nivåernivå:  {total_number_of_failures}")
     print(score)
+    
+
 
 play_game()
