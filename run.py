@@ -21,7 +21,6 @@ while True:
         print("\nInvalid choice, try again!")
 
 
-
 level_1_questions = [
   {
     'question': "\nA square has ___ sides?",
@@ -74,13 +73,12 @@ def level_one(level_1_questions):
     return you_win, score
 
 
-# #level 2 in game
+#level 2 in game
 def run_test_2():
     secret_number = int("8")
     guess = ""
     guess_count = 0
-    guess_limit = 10
-    # lose_test_2 = 0
+    guess_limit = 3
     out_of_guesses = False
     you_win = False
     print("\nLEVEL 2!")
@@ -90,32 +88,34 @@ def run_test_2():
             if guess_count < guess_limit:
                 print("\nCan you guess the right number between 0-15? ")
                 guess = int(input("enter guess: "))
-                guess_count += 1
+                guess_count += 1  
             else:
                 out_of_guesses = True
         except ValueError:
             print("\nInvalid number, must be a number 0-15")
 
     if out_of_guesses:
-        # lose_test_2 += 1
         print("\nYOU LOSE!")
         print("\nTry again....")
         print("________________________")
-        run_test_2()
     else:
-        you_win = True
-        os.system('clear')
-        print("\nCorrect!")
-        print(f"\nyou guessed {guess_count} times")
-        # print(lose_test_2)
-        print("\nWelcome to level 3!")
+        os.system = ('clear')
+        print("Welcome to level 3!")
         print("________________________")
         print()
+        you_win = True
+        # you_win = True
+        # os.system = ('clear')
+        # print("\nCorrect!")
+        # print(f"\nyou guessed {guess_count} times")
+        # print("\nWelcome to level 3!")
+        # print("________________________")
+        # print()
 
-    return you_win, guess_count
+    return you_win
+
+
 # #level 3 in game
-
-
 question_prompts = [
   "Adding the numbers between 1 to 100 consecutively (1+2+3+4+…) gives you " +
   "what final answer?\n(a) 5050\n(b) 3050\n(c) 10010\n\n",
@@ -145,8 +145,10 @@ def run_test_3(level3):
         answer = input(question.prompt)
         if answer == question.answer:
             score = score + 1
-            os.system('clear')
-    print("\nYou got " + str(score) + "/" + str(len(level3)) + " Correct in level 3")
+        else:    
+            os.system = ('clear')
+    print("\nYou got " + str(score) + "/" + str(len(level3)) + 
+    " Correct in level 3")
 
     return score
 
@@ -155,7 +157,6 @@ def play_game():
     you_win_level_1 = False
     you_win_level_2 = False
     score = 0
-    total_number_of_failures = 0
     number_of_failures_level_1 = 0
     number_of_failures_level_2 = 0
     number_of_failures_level_3 = 0
@@ -170,7 +171,8 @@ def play_game():
             break
         else:
             number_of_failures_level_1 = number_of_failures_level_1 + 1
-            print("\nyou need to answer all questions correctly to move to next level")
+            print("\nyou need to answer all questions" +
+            "correctly to move to next level")
             print("\ntry again")
 
     while not you_win_level_2:
@@ -178,36 +180,19 @@ def play_game():
         # Return the value of you_win
         # If you win the loop breaks
         # Or else a new try on level 1
-        you_win_level_2, guess_count = run_test_2()
-        if you_win_level_1:
+        you_win_level_2 = run_test_2()
+        if you_win_level_2:
             break
         else:
             number_of_failures_level_2 = number_of_failures_level_2 + 1
-            
-        
-    # while not you_win_level_2:
-    #     # anropa funktion level 1 som retunerar ett värde om
-    #     # funktionen har gått bra eller dåligt
-    #     # har den gått bra avbryts while loopen
-    #     # annars nytt försök på level 1
-    #     you_win_level_2, guesses_level_2 = run_test_2()
-    #     number_of_failures_level_2 = number_of_failures_level_2 + 1
-    #     total_number_of_failures = total_number_of_failures + 1
-    #     if you_win_level_2:
-    #         break
 
-    # guesses_level_2 = run_test_2()
+    # run_test_2()
     run_test_3(level3)
-
-    os.system('clear')
-
 
     print("\nThank you for playing, here is your result:")
     print(f"\nnumber of failed attempts level 1: {number_of_failures_level_1}")
     print(f"\nnumber of failed attempts level 2: {number_of_failures_level_2}")
     print(f"\nnumber of wrong answer level 3: {number_of_failures_level_3}")
-    
-    print(score)
 
 
 play_game()
