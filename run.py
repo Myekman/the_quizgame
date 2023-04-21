@@ -61,8 +61,10 @@ def level_one(level_1_questions):
         if score == 3:
             os.system('clear')
             print("well done, you're on to the next level!")
-            print(f"\n\nYour score is {score}")
+            # print(f"\n\nYour score is {score}")
             print("\n\nWelcome to level 2!")
+            print("\nCan you guess the right number between 0-15? ")
+            print("you have 3 tries")
             print("________________________")
             you_win = True
         elif score < 3:
@@ -70,7 +72,7 @@ def level_one(level_1_questions):
             print(f"\nWrong answer: {wrong_answer}")
 
     # #returnera om funktionen har gått bra eller dåligt
-    return you_win, score
+    return you_win
 
 
 # level 2 in game
@@ -86,7 +88,7 @@ def run_test_2():
     while guess != secret_number and not (out_of_guesses):
         try:
             if guess_count < guess_limit:
-                print("\nCan you guess the right number between 0-15? ")
+                # print("\nCan you guess the right number between 0-15? ")
                 guess = int(input("enter guess: "))
                 guess_count += 1  
             else:
@@ -100,9 +102,8 @@ def run_test_2():
         print("________________________")
     else:
         you_win = True
-        os.system = ('clear')
         print("\nCorrect!")
-        print(f"\nyou guessed {guess_count} times")
+        os.system('clear')
         print("\nWelcome to level 3!")
         print("________________________")
         print()
@@ -141,7 +142,7 @@ def run_test_3(level3):
         if answer == question.answer:
             score = score + 1
         else:    
-            os.system = ('clear')
+            os.system('clear')
 
     return score
 
@@ -150,7 +151,7 @@ def play_game():
     you_win_level_1 = False
     you_win_level_2 = False
     you_win_level_2 = False
-    score = 0
+    # score = 0
     number_of_failures_level_1 = 0
     number_of_failures_level_2 = 0
     # number_of_failures_level_3 = 0
@@ -160,7 +161,7 @@ def play_game():
         # Return the value of you_win
         # If you win the loop breaks
         # Or else a new try on level 1
-        you_win_level_1, score = level_one(level_1_questions)
+        you_win_level_1 = level_one(level_1_questions)
         if you_win_level_1:
             break
         else:
@@ -182,7 +183,7 @@ def play_game():
 
     # run_test_2()
     score_result = run_test_3(level3)
-
+    
     print("\nThank you for playing, here is your result:")
     print(f"\nnumber of failed attempts level 1: {number_of_failures_level_1}")
     print(f"\nnumber of failed attempts level 2: {number_of_failures_level_2}")
