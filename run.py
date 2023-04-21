@@ -17,8 +17,7 @@ SHEET = GSPREAD_CLIENT.open('the_quizgame')
 
 result = SHEET.worksheet('result')
 
-# data = result.get_all_values()
-# print(data)
+final_result = []
 
 print("Welcome to this game!")
 
@@ -174,18 +173,29 @@ def run_test_3(level3):
     return score
 
 
+def update_worksheet(data):
+    global final_result
+    print("final_results", final_result)
+    
+    print("Updating worksheet")
+    worksheet_to_update = SHEET.worksheet('result')
+    worksheet_to_update.append_row(data)
+    print("Result updated successfully")
+
+
 def play_game():
     """
     Call all 3 levels 
     If you_win level 1 break, else try again and count number of failed tries
     If you_win level 2 break, else try again and count number of failed tries
     """
+    global final_result
     you_win_level_1 = False
     you_win_level_2 = False
     you_win_level_2 = False
     number_of_failures_level_1 = 0
     number_of_failures_level_2 = 0
-    final_result = []
+    # final_result = []
 
     while not you_win_level_1:
         # Call the function level_one
@@ -198,7 +208,6 @@ def play_game():
             break
         else:
             number_of_failures_level_1 = number_of_failures_level_1 + 1
-            # final_result.append(number_of_failures_level_1)
             print("\nyou need to answer all questions" +
             "correctly to move to next level")
             print("\ntry again")
@@ -214,21 +223,22 @@ def play_game():
             break
         else:
             number_of_failures_level_2 = number_of_failures_level_2 + 1
-            # final_result.append(number_of_failures_level_2)
 
     score_result = run_test_3(level3)
     final_result.append(score_result)
-    
+
+
     print("\nThank you for playing, here is your result:")
     print(f"\nnumber of failed attempts level 1: {number_of_failures_level_1}")
     print(f"\nnumber of failed attempts level 2: {number_of_failures_level_2}")
-    print("\nYou got " + str(score_result) + "/" + str(len(level3)) + 
+    print("\nYou got " + str(score_result) + "/" + str(len(level3)) +
     " Correct in level 3")
 
     data = result.get_all_values()
     print("data", data)
 
-    print("final_results", final_result)
+    # print("final_results", final_result)
+    update_worksheet(final_result)
 
 
 play_game()
