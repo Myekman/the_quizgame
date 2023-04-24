@@ -29,7 +29,10 @@ while True:
     play = input("\nDo you like to play? please type yes or no: ")
     
     if play == "yes":
-        os.system('clear')
+        print("\nLet's do this!")
+        print("________________________")
+        print("\nLEVEL 1!")
+        print("\n(Just answer with a number)")
         break
     elif play == "no":
         print("Goodbye..")
@@ -49,7 +52,7 @@ level_1_questions = [
     'answer': '180'
   },
   {
-    'question': "\nWhat is the answer of (-2)^2?",
+    'question': "\nWhat is the answer of 2^2?",
     'answer': '4'
   }
 ]
@@ -64,11 +67,6 @@ def level_one(level_1_questions):
     score = 0
     wrong_answer = 0
     you_win = False
-
-    print("\nLet's do this!")
-    print("________________________")
-    print("\nLEVEL 1!")
-    print("(\nJust answer with a number)")
 
     for question in level_1_questions:
         show_question = question.get("question")
