@@ -147,8 +147,8 @@ def run_test_2():
 
 # #level 3 in game
 question_prompts = [
-  "Adding the numbers between 1 to 100 consecutively (1+2+3+4+…) gives you " +
-  "what final answer?\n(a) 5050\n(b) 3050\n(c) 10010\n\n",
+  "Adding the numbers between 1 to 100 consecutively (1+2+3+4+…)" +
+  " gives you what final answer?\n(a) 5050\n(b) 3050\n(c) 10010\n\n",
   "What is the value of Pi to four individual" +
   "decimal places?\n(a) 3.1418\n(b) 3.1426\n(c) 3.1416\n\n",
   "How many hours are there in a year (rounded to the nearest hour)?" +
