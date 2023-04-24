@@ -176,10 +176,10 @@ def update_worksheet(data):
     Update the google worksheet with the result
     of all games printed at the end when game finished
     """
-    print("Updating worksheet")
+    print("\nUpdating worksheet")
     worksheet_to_update = SHEET.worksheet('result')
     worksheet_to_update.append_row(data)
-    print("Result updated successfully")
+    print("\nResult updated successfully")
 
 
 def play_game():
