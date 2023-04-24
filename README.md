@@ -5,6 +5,8 @@ This is a command-line game created with python for my Project portfolio 3 at Co
 
 The game is structured in 3 levels. If you pass the first level, you move on to the next, if you don't, you get more attempts. At the end, your results are compiled and saved to a google worksheet. The result is also printed out in the end of the game. So the player is able to se the results aswell.
 
+* Link to app [Here](https://the-quizgame.herokuapp.com/)
+
 ### README Table Content
 * [Indtroduktion](#introduktion)
 * [User Stories](#user-stories)
@@ -41,6 +43,7 @@ The game is structured in 3 levels. If you pass the first level, you move on to 
 
 ## Flowcharts:
 ![IMG](docs/flowchart2.png)
+* [Link to sheet:](https://docs.google.com/spreadsheets/d/1Y3-gufVw5YeNT0GoKhuRhtBzbFBTpEV2ubTGj8HOeBE/edit#gid=0)
 
 ## Game features:
 
