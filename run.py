@@ -24,7 +24,7 @@ print(f"\nHello {name}!")
 
 while True:
     play = input("\nDo you like to play? please type yes or no: ")
-
+    
     if play == "yes":
         print("\nLet's do this!")
         print("________________________")
