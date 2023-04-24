@@ -27,7 +27,6 @@ print(f"\nHello {name}!")
 
 while True:
     play = input("\nDo you like to play? please type yes or no: ")
-    
     if play == "yes":
         print("\nLet's do this!")
         print("________________________")
@@ -137,7 +136,7 @@ def run_test_2():
         print("Correct, 8 was the secret number!")
         print("________________________")
         print("\nWelcome to level 3!")
-        print("\nIn this level you just have one try," + 
+        print("\nIn this level you just have one try," +
               " so think before you talk")
         print("________________________")
         print()
@@ -241,8 +240,7 @@ def play_game():
     print(f"\nNumber of failed attempts level 1: {number_of_failures_level_1}")
     print(f"\nNumber of failed attempts level 2: {number_of_failures_level_2}")
     print("\nYou got " + str(score_result) + "/" + str(len(level3)) +
-          " Correct in level 3")    
-
+          " Correct in level 3")
     update_worksheet(final_result)
 
 
