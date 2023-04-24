@@ -17,8 +17,6 @@ SHEET = GSPREAD_CLIENT.open('the_quizgame')
 
 result = SHEET.worksheet('result')
 
-final_result = []
-
 print("Welcome to this game!")
 
 name = input("\nEnter your name: ")
@@ -100,9 +98,9 @@ def level_one(level_1_questions):
 def run_test_2():
     """
     Continue to guess a number until secret_number is guessed
-    For every time you have guessed wrong three times, 
+    For every time you have guessed wrong three times,
     you lose and get another try
-    Return the value of you_win to play_game() where this function is called 
+    Return the value of you_win to play_game() where this function is called
     """
     secret_number = int("8")
     guess = ""
@@ -116,7 +114,7 @@ def run_test_2():
         try:
             if guess_count < guess_limit:
                 guess = int(input("enter guess: "))
-                guess_count += 1  
+                guess_count += 1
             else:
                 out_of_guesses = True
         except ValueError:
@@ -167,16 +165,17 @@ def run_test_3(level3):
         answer = input(question.prompt)
         if answer == question.answer:
             score = score + 1
-        else:    
+        else:
             os.system('clear')
 
     return score
 
 
 def update_worksheet(data):
-    global final_result
-    print("final_results", final_result)
-    
+    """
+    Update the google worksheet with the result
+    of all games printed at the end when game finished
+    """
     print("Updating worksheet")
     worksheet_to_update = SHEET.worksheet('result')
     worksheet_to_update.append_row(data)
@@ -185,7 +184,7 @@ def update_worksheet(data):
 
 def play_game():
     """
-    Call all 3 levels 
+    Call all 3 levels
     If you_win level 1 break, else try again and count number of failed tries
     If you_win level 2 break, else try again and count number of failed tries
     """
@@ -195,7 +194,7 @@ def play_game():
     you_win_level_2 = False
     number_of_failures_level_1 = 0
     number_of_failures_level_2 = 0
-    # final_result = []
+    final_result = []
 
     while not you_win_level_1:
         # Call the function level_one
@@ -209,7 +208,7 @@ def play_game():
         else:
             number_of_failures_level_1 = number_of_failures_level_1 + 1
             print("\nyou need to answer all questions" +
-            "correctly to move to next level")
+                  "correctly to move to next level")
             print("\ntry again")
 
     while not you_win_level_2:
@@ -227,17 +226,12 @@ def play_game():
     score_result = run_test_3(level3)
     final_result.append(score_result)
 
-
     print("\nThank you for playing, here is your result:")
     print(f"\nnumber of failed attempts level 1: {number_of_failures_level_1}")
     print(f"\nnumber of failed attempts level 2: {number_of_failures_level_2}")
     print("\nYou got " + str(score_result) + "/" + str(len(level3)) +
-    " Correct in level 3")
+          " Correct in level 3")
 
-    data = result.get_all_values()
-    print("data", data)
-
-    # print("final_results", final_result)
     update_worksheet(final_result)
 
 
