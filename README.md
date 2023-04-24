@@ -6,12 +6,16 @@ This is a command-line game created with python for my Project portfolio 3 at Co
 The game is structured in 3 levels. If you pass the first level, you move on to the next, if you don't, you get more attempts. At the end, your results are compiled and saved to a google worksheet. The result is also printed out in the end of the game. So the player is able to se the results aswell.
 
 ### README Table Content
-* [Indtroduction](#introduktion)
+* [Indtroduktion](#introduktion)
 * [User Stories](#user-stories)
 * [Design](#design)
 * [Flowcharts](#flowcharts)
 * [Storage Data](#storage-data)
 * [Technologies Used](#technologies-sed)
+* [Programs Used](#programs-used)
+* [Testing](#testing)
+* [Deploying](#deploying)
+* [Forking and Cloning](#forking-and-cloning)
 
 ### Game Features
 * [Welcome/Intro](#welcome)
@@ -48,7 +52,6 @@ The game is structured in 3 levels. If you pass the first level, you move on to 
 * If any other, ValueError.
 ![IMG](docs/pp3.6.png)
 * If you write yes the game begin
-![IMG](docs/pp3.5.png)
 ## Level 1
 * When you type yes the game will begin,
 * Level one questions:
@@ -78,7 +81,7 @@ I have used a Google sheet to save results every time the game is played. This s
 
 ## Google sheet
 ![img](docs/pp3.15.png)
-* The goal is to have 0 failed tries in level 1 and 2, and the max score 3 in level 3.
+* The goal is to have 0 failed tries in level 1 and 2, and the max score of 3 in level 3.
 
 ## Technologies Used:
 * Python
@@ -87,4 +90,83 @@ I have used a Google sheet to save results every time the game is played. This s
 * [Gspread](https://pypi.org/project/gspread/): Allows communication with Google Sheets.
 * [Google Auth](https://google-auth.readthedocs.io/en/stable/index.html): credentials used to validate credentials and grant access to Google service accounts.
 * [import os](https://www.geeksforgeeks.org/clear-screen-python/): To clear the terminal
+
+## Programs Used
+* [GitPod](https://www.gitpod.io/): The prodject was created with Gitpod. 
+* [GitHub](https://github.com/): 
+With regular commit in the terminal the project is pushed to github where it is stored.
+* [Heruko](https://dashboard.heroku.com/apps): Heroku was used to deploy the live project
+* [PEP8 Validator](https://pep8ci.herokuapp.com/): The PEP8 validator was used to detect errors in the code.
+* [Lucidchart](https://lucid.app/documents#/documents?folder_id=recent): Lucidchart was used to create the flowchart
+
+
+## Testing 
+No error was found after after handling error messages:
+![IMG](docs/pp3.1.png)
+
+### Functionality
+* The terminal has no issues and is working properly.
+* The inputs for Name is working.
+* The inputs for play yes/no working as it should. 
+* The value error is working for input yes/no.
+* The os.system('clear') is working to clear terminal.
+* The game is running with no to long text, all text is displayed.
+* The result in the end is calcutating as explected.
+* The google worksheet is updating as expected.
+
+## Bugs 
+
+### Fixed bugs:
+1. Print statements had errors of "Line to long ... > 79"
+* Solution: made several shorter "my text" and add "+" between, "then the rest of text"
+2. In the first level I got the game to work but only if I won on the first try. If I lost and got another try and won the second round I didn't progress to level 2 like I wanted. It was something with my break in the loop which did not work correctly.
+* Solution: I made a play_game() function where i called the level_one() function instead of just at the end. I returned the boolean of you_win from the level_one to the run_game() function. And in the run_game function i put the "break" when you_win = True. 
+3. 
+I created an empty list to store the results after each round. I wrote: final_result.append(number_of_failures_level_1) in my else: within my play_game() function.
+* Solution: I moved my append code just one step up in code, to "if you_win_level_one".
+
+## Deploying 
+1. Log in at [Heroku](https://dashboard.heroku.com/apps) and create an account. 
+2. Click create new app at the top right of page.
+3. You need to call your project something uniq, it can't be a name that already exist.
+4. Select your region.
+5. Click create App
+6.  Click on the Settings Tab and scroll down to Config Vars. 
+7. Click Reveal Config Vars and enter port into the Key box and 8000 into the Value box and click the Add button.
+8. Click Reveal Config Vars again and enter CREDS into the Key and paste in your requrement.txt file in value box. 
+9. Add python and node.js for your Buildpack. 
+10. Scroll to the top of the page and choose the Deploy tab.
+11. Select Github as deployment method.
+12. Confirm you want to connect.
+13. Search for the repository name and click the connect button.
+14. Select either Enable Automatic or Manual deployment when you push updates to github. 
+
+## Forking and Cloning 
+### Fork this project:
+1. Open GitHub
+2. Click on the project to be forked
+3. Find the Fork button at the top right of the page
+4. Once you click the button the fork will be in your repository.
+### Clone this project:
+1. Log in or sign up to GitHub.
+2. Go to the repository for this project: [The Quizgame](#the-quizgame)
+3. Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
+4. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
+5. Type 'git clone' into the terminal and then paste the link you copied in step 3 and press enter.
+
+## Credits 
+
+### content:
+* The idea for the project is my own. With inspiration and help from love sandwiches and youtube videos like:
+* https://www.youtube.com/watch?v=zehwgTB0vV8&t=480s
+* https://www.youtube.com/watch?v=B9ORjeQlPOA
+* 
+
+### Sources
+* [Stack Overflow](https://stackoverflow.com/)
+* [W3Schools - Python](https://www.w3schools.com/python/)
+
+### Special thanks to:
+* My trusty and kind mentor Martina Terlevic.
+* Wondeful help from Tutor support.
 
