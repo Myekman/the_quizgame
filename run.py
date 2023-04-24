@@ -17,10 +17,10 @@ SHEET = GSPREAD_CLIENT.open('the_quizgame')
 
 result = SHEET.worksheet('result')
 
-print("Welcome to this game!")
+print("Welcome!")
 print("\nThis game is structured in 3 levels." +
       "\nAll 3 questions in this level" +
-      "must be answered correctly to advance to the next level.")
+      " must be answered correctly to advance to level 2.")
 
 name = input("\nEnter your name: ")
 print(f"\nHello {name}!")
@@ -40,16 +40,17 @@ while True:
 
 level_1_questions = [
   {
-    'question': "\nA square has ___ sides?",
+    'question': "\nWhat is the area of a square with sides of 2cm?",
     'answer': '4'
   },
   {
-    'question': "\nA triangle has ___ sides?",
-    'answer': '3'
+    'question': "\nThe sum of the three angles of any" +
+                " triangle is equal to ___ degrees?",
+    'answer': '180'
   },
   {
-    'question': "\nA circle has ___ sides?",
-    'answer': '0'
+    'question': "\nWhat is the answer of (-2)^2?",
+    'answer': '4'
   }
 ]
 
@@ -67,6 +68,7 @@ def level_one(level_1_questions):
     print("\nLet's do this!")
     print("________________________")
     print("\nLEVEL 1!")
+    print("(\nJust answer with a number)")
 
     for question in level_1_questions:
         show_question = question.get("question")
@@ -137,7 +139,8 @@ def run_test_2():
         print("Correct, 8 was the secret number!")
         print("________________________")
         print("\nWelcome to level 3!")
-        print("\nIn this level you just have one try, so think before you talk")
+        print("\nIn this level you just have one try," + 
+              " so think before you talk")
         print("________________________")
         print()
 
@@ -217,8 +220,8 @@ def play_game():
         else:
             number_of_failures_level_1 = number_of_failures_level_1 + 1
             print("\nyou need to answer all questions" +
-                  "correctly to move to next level")
-            print("\ntry again")
+                  " correctly to move to next level")
+            print("\nTRY AGAIN........")
 
     while not you_win_level_2:
         # Call the function run_test_2
@@ -237,8 +240,8 @@ def play_game():
     os.system('clear')
 
     print("\nThank you for playing, here is your result:")
-    print(f"\nnumber of failed attempts level 1: {number_of_failures_level_1}")
-    print(f"\nnumber of failed attempts level 2: {number_of_failures_level_2}")
+    print(f"\nNumber of failed attempts level 1: {number_of_failures_level_1}")
+    print(f"\nNumber of failed attempts level 2: {number_of_failures_level_2}")
     print("\nYou got " + str(score_result) + "/" + str(len(level3)) +
           " Correct in level 3")    
 
