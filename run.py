@@ -18,6 +18,9 @@ SHEET = GSPREAD_CLIENT.open('the_quizgame')
 result = SHEET.worksheet('result')
 
 print("Welcome to this game!")
+print("\nThis game is structured in 3 levels." +
+      "\nAll 3 questions in this level" +
+      "must be answered correctly to advance to the next level.")
 
 name = input("\nEnter your name: ")
 print(f"\nHello {name}!")
@@ -26,9 +29,7 @@ while True:
     play = input("\nDo you like to play? please type yes or no: ")
     
     if play == "yes":
-        print("\nLet's do this!")
-        print("________________________")
-        print("\nLEVEL 1!")
+        os.system('clear')
         break
     elif play == "no":
         print("Goodbye..")
@@ -63,6 +64,10 @@ def level_one(level_1_questions):
     wrong_answer = 0
     you_win = False
 
+    print("\nLet's do this!")
+    print("________________________")
+    print("\nLEVEL 1!")
+
     for question in level_1_questions:
         show_question = question.get("question")
         print(show_question)
@@ -82,8 +87,9 @@ def level_one(level_1_questions):
             os.system('clear')
             print("well done, you're on to the next level!")
             print("\n\nWelcome to level 2!")
+            print("________________________")
             print("\nCan you guess the right number between 0-15? ")
-            print("you have 3 tries")
+            print("You have 3 tries")
             print("________________________")
             you_win = True
         elif score < 3:
@@ -128,7 +134,10 @@ def run_test_2():
         you_win = True
         print("\nCorrect!")
         os.system('clear')
+        print("Correct, 8 was the secret number!")
+        print("________________________")
         print("\nWelcome to level 3!")
+        print("\nIn this level you just have one try, so think before you talk")
         print("________________________")
         print()
 
@@ -225,12 +234,13 @@ def play_game():
 
     score_result = run_test_3(level3)
     final_result.append(score_result)
+    os.system('clear')
 
     print("\nThank you for playing, here is your result:")
     print(f"\nnumber of failed attempts level 1: {number_of_failures_level_1}")
     print(f"\nnumber of failed attempts level 2: {number_of_failures_level_2}")
     print("\nYou got " + str(score_result) + "/" + str(len(level3)) +
-          " Correct in level 3")
+          " Correct in level 3")    
 
     update_worksheet(final_result)
 
