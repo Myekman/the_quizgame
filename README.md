@@ -22,6 +22,7 @@ The game is structured in 3 levels. If you pass the first level, you move on to 
 * [Level 1](#level-1)
 * [Level 2](#level-2)
 * [Level 3](#level-3)
+* [Result](#result)
 
 ## User Stories 
 * As a creator, I want to:
@@ -38,11 +39,12 @@ The game is structured in 3 levels. If you pass the first level, you move on to 
 * I have not imporded any colorama for colors since there where no time left for me to do that. But is it something to add to develop the app further in the feature. 
 * The design thinking i did was that i clear the terminal when move to next levels. I think it looks less messy and the app is easier to follow. 
 
-## Flowcharts
+## Flowcharts:
+![IMG](docs/flowchart2.png)
 
-# Game features
+## Game features:
 
-## Welcome/Intro 
+### Welcome/Intro 
 * Explains how the game works and asks you to fill in your name to play.
 ![IMG](docs/pp3.2.png)
 * When you have filled in your name, this will show.
@@ -52,7 +54,7 @@ The game is structured in 3 levels. If you pass the first level, you move on to 
 * If any other, ValueError.
 ![IMG](docs/pp3.6.png)
 * If you write yes the game begin
-## Level 1
+### Level 1
 * When you type yes the game will begin,
 * Level one questions:
 ![IMG](docs/pp3.5.png)
@@ -62,16 +64,16 @@ The game is structured in 3 levels. If you pass the first level, you move on to 
 ![IMG](docs/pp3.8.png)
 * If you fail you get another try and the questions run again.
 ![IMG](docs/pp3.9.png)
-## Level 2
+### Level 2
 * In this level you will guess a secret number between 0-15.
 ![IMG](docs/pp3.10.png)
 * You have 3 tries and if you guess wrong you get 3 more tries.
 ![IMG](docs/pp3.11.png)
-## Level 3
+### Level 3
 * In level 3 you can have minimun 0 score and max 3 score. Just one try here.
 ![Img](docs/pp3.12.png)
 
-## Result
+### Result
 * When game is finished you can se your result and it will be saved to a google worksheet.
 ![img](docs/pp3.13.png)
 
