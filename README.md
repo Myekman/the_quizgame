@@ -1,31 +1,27 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# The Quizgame
 
-Welcome Myekman,
+## Introduktion
+This is a command-line game created with python for my Project portfolio 3 at Code Institute, Full-stack development program. 
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+The game is structured in 3 levels. If you pass the first level, you move on to the next, if you don't, you get more attempts. At the end, your results are compiled and saved to a google worksheet. The result is also printed out in the end of the game. So the player is able to se the results aswell.
 
-## Reminders
+### README Table Content
+* [Indtroduction](#introduktion)
+* [User Stories](#user-stories)
+* [Design](#design)
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+### User Stories 
+* As a creator, I want to:
+1. Build an easy app with python.
+2. Build an app that is structered and easy to follow. 
+3. Build an app that is easy but challenging. 
 
-## Creating the Heroku app
+* As a visitor, i want to:
+1. Enter the game with my name.
+2. Be able to understand how to play the game. 
+3. Be able to see my results so i can develop next time i play. 
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+## Design
+* I have not imporded any colorama for colors since there where no time left for me to do that. But is it something to add to develop the app further in the feature. 
+* The design thinking i did was that i clear the terminal when move to next levels. I think it looks less messy and the app is easier to follow. 
 
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
